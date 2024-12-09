@@ -70,7 +70,7 @@ public class TypingPanel extends JPanel {
                             double wpm = wps * 60;
                             wpm = Math.round(wpm * 100.0) / 100.0;
                             JOptionPane.showMessageDialog(null,
-                                    String.format("Congratulations! You finished in %.2f seconds.\nYour WPM: %.2f", seconds, wpm));
+                                    "Congratulations! You finished in " + seconds + " seconds. \nYour WPM: " + wpm);
                             System.exit(0);
                         }
                         typedWords[currentWordIndex] = "";
