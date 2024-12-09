@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7433fc1-5882-47cd-a951-c0f83e3037de" name="Changes" comment="TypeKing project&#10;By: Andrew Kogan, Benson Wu, Samuel Park">
+    <list default="true" id="c7433fc1-5882-47cd-a951-c0f83e3037de" name="Changes" comment="updates the font right after user types wrong letter">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TypingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TypingPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TypingGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TypingGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +65,19 @@
       <option name="presentableId" value="Default" />
       <updated>1733701959674</updated>
     </task>
+    <task id="LOCAL-00001" summary="updates the font right after user types wrong letter">
+      <option name="closed" value="true" />
+      <created>1733704816402</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1733704816402</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="updates the font right after user types wrong letter" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates the font right after user types wrong letter" />
   </component>
 </project>

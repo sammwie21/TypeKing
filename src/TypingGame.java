@@ -1,11 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
-import java.io.FileNotFoundException;
 
 public class TypingGame extends JFrame {
     private int lvl1 = 25;
     private int lvl2 = 50;
     private int lvl3 = 75;
+
     public TypingGame(int width, int height) {
         try {
             ScanFile.createWords();
@@ -20,7 +20,7 @@ public class TypingGame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // display the level screen
+        // Display the level screen
         String[] options = {"Easy (25 words)", "Medium (50 words)", "Hard (75 words)"};
         int choice = JOptionPane.showOptionDialog(
                 null,
@@ -33,20 +33,22 @@ public class TypingGame extends JFrame {
                 options[0]
         );
 
-        // user chooses level
+        // close the game is user clicks exit button
+        if (choice == JOptionPane.CLOSED_OPTION) {
+            System.exit(0);
+        }
+
+        // user choose the level
         int wordCount = switch (choice) {
             case 0 -> lvl1; // Easy
             case 1 -> lvl2; // Medium
             case 2 -> lvl3; // Hard
-            default -> 25; // Default to Medium
+            default -> lvl1; // Default to Easy
         };
 
         TimerDisplay timer = new TimerDisplay();
-
         TypingPanel panel = new TypingPanel(timer, wordCount);
 
-
-        // use BorderLayout to position the timer and typing panel
         setLayout(new BorderLayout());
         add(timer, BorderLayout.NORTH);
         add(panel, BorderLayout.CENTER);
@@ -70,7 +72,7 @@ public class TypingGame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // display the level screen
+        // start screen where user needs to choose level
         String[] options = {"Easy (25 words)", "Medium (50 words)", "Hard (75 words)"};
         int choice = JOptionPane.showOptionDialog(
                 null,
@@ -80,23 +82,25 @@ public class TypingGame extends JFrame {
                 JOptionPane.INFORMATION_MESSAGE,
                 null,
                 options,
-                options[0]
+                null
         );
 
-        // user chooses level
+        // if user clicks the exit button, it closes
+        if (choice == JOptionPane.CLOSED_OPTION) {
+            System.exit(0);
+        }
+
+        // user chooses the level
         int wordCount = switch (choice) {
             case 0 -> lvl1; // Easy
             case 1 -> lvl2; // Medium
             case 2 -> lvl3; // Hard
-            default -> 25; // Default to Medium
+            default -> lvl1; // Default to Easy
         };
 
         TimerDisplay timer = new TimerDisplay();
-
         TypingPanel panel = new TypingPanel(timer, wordCount);
 
-
-        // use BorderLayout to position the timer and typing panel
         setLayout(new BorderLayout());
         add(timer, BorderLayout.NORTH);
         add(panel, BorderLayout.CENTER);
