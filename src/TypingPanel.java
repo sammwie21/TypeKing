@@ -1,7 +1,10 @@
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.Random;
 
 public class TypingPanel extends JPanel {
@@ -46,7 +49,6 @@ public class TypingPanel extends JPanel {
                             // change the font when a wrong letter is typed
                             randFont = ScanFile.fonts.get(random.nextInt(ScanFile.fonts.size()));
                         }
-
                         repaint();
                     }
                 }
@@ -55,13 +57,23 @@ public class TypingPanel extends JPanel {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE && !typedWords[currentWordIndex].isEmpty()) {
-                    // Remove the last character
+                    // remove the last character
                     typedWords[currentWordIndex] = typedWords[currentWordIndex].substring(0, typedWords[currentWordIndex].length() - 1);
                     repaint();
                 } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    // Check if the word matches
+                    // check if the word matches
                     if (typedWords[currentWordIndex].equals(currentWords[currentWordIndex])) {
                         currentWordIndex++;
+
+                        // play sound
+                        if (currentWordIndex % 5 == 4) {
+                            try {
+                                playSound();
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                            }
+                        }
+
                         if (currentWordIndex >= currentWords.length) {
                             timerDisplay.stopTimer();
                             long elapsedTime = timerDisplay.getElapsedTime(); // in milliseconds
@@ -78,6 +90,7 @@ public class TypingPanel extends JPanel {
                     }
                 }
             }
+
         });
     }
 
@@ -120,5 +133,12 @@ public class TypingPanel extends JPanel {
 
             x += wordSpacing;
         }
+    }
+
+    protected static void playSound() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        SimpleAudioPlayer audioPlayer =
+                new SimpleAudioPlayer("src\\Boom.wav");
+
+        audioPlayer.playOnce();
     }
 }
